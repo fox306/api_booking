@@ -4,7 +4,8 @@ import {
     updateRoom, 
     deleteRoom, 
     getRoom, 
-    getAllRoom 
+    getAllRoom, 
+    updateRoomAvailable
 } from "../controller/roomController.js"
 import { verifyAdmin } from "../others/verifyAdmin.js"
 
@@ -15,6 +16,7 @@ router.post("/:hotelId", verifyAdmin, createRoom)
 
 // UPDATE ROOM
 router.put("/:id", verifyAdmin, updateRoom)
+router.put("/available/:roomNumberId", updateRoomAvailable)
 
 // DELETE ROOM
 router.delete("/:id/:hotelId", verifyAdmin, deleteRoom)

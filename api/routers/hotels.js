@@ -5,14 +5,17 @@ import {
     deleteHotel,
     getHotel,
     getAllHotel,
-    countByCity
+    countByCity,
+    countByType,
+    getHotelsOnOptions,
+    getHotelRooms
 } from "../controller/hotelsController.js"
 import { verifyAdmin } from "../others/verifyAdmin.js"
 
 const router = express.Router()
 
 // CREATE
-router.post("/", createHotel)
+router.post("/", verifyAdmin, createHotel)
 
 // UPDATE
 router.put("/:hotelId", verifyAdmin, updateHotel)
@@ -25,6 +28,9 @@ router.get("/find/:hotelId", getHotel)
 
 // GET ALL
 router.get("/", getAllHotel)
-router.get("/countByCity", verifyAdmin, countByCity)
+router.get("/countByCity", countByCity)
+router.get("/countByType", countByType)
+router.get("/options", getHotelsOnOptions)
+router.get("/rooms/:hotelId", getHotelRooms)
 
 export default router
